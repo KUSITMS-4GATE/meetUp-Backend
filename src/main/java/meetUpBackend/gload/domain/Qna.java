@@ -1,4 +1,4 @@
 package meetUpBackend.gload.domain;
 
-public class testDomain {
+public class Qna {
 }
