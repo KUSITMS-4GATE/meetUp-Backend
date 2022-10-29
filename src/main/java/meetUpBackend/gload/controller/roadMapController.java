@@ -16,14 +16,12 @@ public class roadMapController {
     private final roadMapService roadMapService;
 
     @PostMapping("/roadMap/save")
-    public CreateRoadMap saveRoadMap(@RequestBody @Validated MapRequest request) {
+    public void saveRoadMap(@RequestBody @Validated MapRequest request) {
 
         Roadmap roadmap = new Roadmap();
         roadmap.setTitle(request.getTitle());
         roadmap.setContent(request.getContent());
-
-        Long id = roadMapService.join(roadmap);
-        return new CreateRoadMap(id);
+        roadMapService.join(roadmap);
     }
 
     @Data
