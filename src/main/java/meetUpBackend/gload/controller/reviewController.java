@@ -7,10 +7,13 @@ import meetUpBackend.gload.domain.Review;
 import meetUpBackend.gload.service.reviewService;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
@@ -22,7 +25,6 @@ public class reviewController {
 
     @PostMapping("/activity/write")
     public Review saveReview(@RequestBody @Validated reviewRequest request) {
-        log.debug("123");
         Review review = new Review();
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
@@ -33,13 +35,26 @@ public class reviewController {
 
     @GetMapping("/activity/update/{post_id}")
     public Review updateReviewPage(@PathVariable("post_id") long reviewId, Model model){
-        Review review = new Review();
+        Review getReviewId = reviewService.selectOne(reviewId);
 
+        model.addAttribute("getReviewId", getReviewId);
+
+        return getReviewId;
+    }
+
+    @PutMapping("/activity/update/{post_id}")
+    public Review updateReview(@RequestBody reviewRequest request, @PathVariable("post_id") long reviewId){
+        Review review = new Review();
+        review.setTitle(request.getTitle());
+        review.setContent(request.getContent());
+        review.setCategory(request.getCategory());
+        reviewService.updateById(review, reviewId);
         return review;
     }
 
+
     @GetMapping("/activity/{post_id}")
-    public Review selectReview(@PathVariable("post_id") long reviewId, Review review){
+    public Review selectReview(@PathVariable("post_id") long reviewId){
         Review reviewIdSelect = reviewService.selectOne(reviewId);
 
         return reviewIdSelect;
