@@ -1,26 +1,25 @@
 package meetUpBackend.gload.service;
 
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Roadmap;
 import meetUpBackend.gload.repository.roadMapRepository;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class roadMapService {
 
-    private final roadMapRepository roadMapRepository;
+    private final roadMapRepository RoadMapRepository;
 
     /**
      * 로드맵 데이터 저장
      */
-    @Transactional
+   @Transactional
     public Long join(Roadmap roadMap) {
 //        validateDuplicateMember(roadMap); //중복 회원 검증
-        roadMapRepository.save(roadMap);
+        RoadMapRepository.save(roadMap);
         return roadMap.getId();
     }
 
