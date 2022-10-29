@@ -7,12 +7,10 @@ import meetUpBackend.gload.domain.Review;
 import meetUpBackend.gload.service.reviewService;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -37,8 +35,21 @@ public class reviewController {
     public Review updateReviewPage(@PathVariable("post_id") long reviewId, Model model){
         Review review = new Review();
 
-
         return review;
+    }
+
+    @GetMapping("/activity/{post_id}")
+    public Review selectReviewOne(@PathVariable("post_id") long reviewId, Review review){
+        Review reviewIdSelect = reviewService.selectOne(reviewId);
+
+        return reviewIdSelect;
+    }
+
+    @GetMapping("/activity")
+    public String list(Review review) {
+        List<Review> reviewAll = reviewService.findAll();
+
+        return reviewAll.toString();
     }
 
     @Data
