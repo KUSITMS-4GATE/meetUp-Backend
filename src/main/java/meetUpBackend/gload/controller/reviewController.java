@@ -22,7 +22,7 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
-        Long id = reviewService.join(review);
+        Long id = Long.parseLong(reviewService.join(review));
         return new CreateReview(id);
     }
 

@@ -13,8 +13,8 @@ public class reviewService {
     private final reviewRepository reviewRepository;
 
     @Transactional
-    public Long join(Review review){
+    public String join(Review review){
         reviewRepository.save(review);
-        return review.getId();
+        return review.getId().toString();
     }
 }
