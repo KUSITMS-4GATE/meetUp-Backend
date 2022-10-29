@@ -1,5 +1,6 @@
 package meetUpBackend.gload.controller;
 
+import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,9 +56,17 @@ public class reviewController {
 
     @GetMapping("/activity/{post_id}")
     public Review selectReview(@PathVariable("post_id") long reviewId){
+
         Review reviewIdSelect = reviewService.selectOne(reviewId);
 
         return reviewIdSelect;
+    }
+
+    @GetMapping("/activity")
+    public String list(Review review) {
+        List<Review> reviewAll = reviewService.findAll();
+
+        return reviewAll.toString();
     }
 
     @Data

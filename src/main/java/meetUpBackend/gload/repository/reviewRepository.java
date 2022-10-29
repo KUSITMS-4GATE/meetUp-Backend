@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Review;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class reviewRepository {
@@ -17,6 +19,11 @@ public class reviewRepository {
 
     public Review findOne(Long id) {
         return em.find(Review.class, id);
+    }
+
+    public List<Review> findAll() {
+        return em.createQuery("select r from Review r", Review.class)
+                .getResultList();
     }
 
 }
