@@ -6,6 +6,9 @@ import meetUpBackend.gload.domain.Review;
 import meetUpBackend.gload.repository.reviewRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -15,5 +18,11 @@ public class reviewService {
     @Transactional
     public void join(Review review){
         reviewRepository.save(review);
+    }
+
+    @Transactional
+    public Review selectOne(Long reviewId){
+
+        return reviewRepository.findOne(reviewId);
     }
 }
