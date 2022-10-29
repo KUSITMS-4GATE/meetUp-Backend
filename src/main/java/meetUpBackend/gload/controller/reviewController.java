@@ -39,10 +39,17 @@ public class reviewController {
     }
 
     @GetMapping("/activity/{post_id}")
-    public Review selectReview(@PathVariable("post_id") long reviewId, Review review){
+    public Review selectReviewOne(@PathVariable("post_id") long reviewId, Review review){
         Review reviewIdSelect = reviewService.selectOne(reviewId);
 
         return reviewIdSelect;
+    }
+
+    @GetMapping("/activity")
+    public String list(Review review) {
+        List<Review> reviewAll = reviewService.findAll();
+
+        return reviewAll.toString();
     }
 
     @Data

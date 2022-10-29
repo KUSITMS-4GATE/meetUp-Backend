@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -19,6 +20,11 @@ public class reviewRepository {
 
     public Review findOne(Long id) {
         return em.find(Review.class, id);
+    }
+
+    public List<Review> findAll() {
+        return em.createQuery("select r from Review r", Review.class)
+                .getResultList();
     }
 
 }

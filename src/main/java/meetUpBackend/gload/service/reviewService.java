@@ -25,4 +25,9 @@ public class reviewService {
 
         return reviewRepository.findOne(reviewId);
     }
+
+    @Transactional
+    public List<Review> findAll() {
+        return reviewRepository.findAll();
+    }
 }
