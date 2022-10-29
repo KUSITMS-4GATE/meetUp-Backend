@@ -1,13 +1,11 @@
 package meetUpBackend.gload.service;
 
+import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Review;
 import meetUpBackend.gload.repository.reviewRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,6 +25,16 @@ public class reviewService {
     }
 
     @Transactional
+    public void updateById(Review review, long reviewId) {
+        Review up_review = reviewRepository.findOne(reviewId);
+
+        if (up_review != null) {
+            up_review.setCategory(up_review.getCategory());
+            up_review.setTitle(up_review.getTitle());
+            up_review.setContent(up_review.getContent());
+        }
+    }
+
     public List<Review> findAll() {
         return reviewRepository.findAll();
     }

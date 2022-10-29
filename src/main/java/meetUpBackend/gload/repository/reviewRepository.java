@@ -1,11 +1,10 @@
 package meetUpBackend.gload.repository;
 
+import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Review;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
