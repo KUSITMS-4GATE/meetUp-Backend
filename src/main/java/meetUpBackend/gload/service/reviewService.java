@@ -38,4 +38,11 @@ public class reviewService {
     public List<Review> findAll() {
         return reviewRepository.findAll();
     }
+
+    @Transactional
+    public int deleteOne(Long reviewId){
+
+        return reviewRepository.deleteOne(reviewId);
+    }
+
 }

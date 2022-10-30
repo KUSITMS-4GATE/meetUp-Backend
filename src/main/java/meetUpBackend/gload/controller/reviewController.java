@@ -69,6 +69,14 @@ public class reviewController {
         return reviewAll.toString();
     }
 
+    @PutMapping("/activity/delete/{post_id}")
+    public int deleteReview(@PathVariable("post_id") long reviewId){
+
+        int deleteReview = reviewService.deleteOne(reviewId);
+
+        return deleteReview;
+    }
+
     @Data
     static class CreateReview {
         private Long id;
