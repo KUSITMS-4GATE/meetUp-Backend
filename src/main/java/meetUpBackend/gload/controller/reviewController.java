@@ -43,7 +43,7 @@ public class reviewController {
         return getReviewId;
     }
 
-    @PutMapping("/activity/update/{post_id}")
+        @PutMapping("/activity/update/{post_id}")
     public Review updateReview(@RequestBody reviewRequest request, @PathVariable("post_id") long reviewId){
         Review review = new Review();
         review.setTitle(request.getTitle());
@@ -52,7 +52,6 @@ public class reviewController {
         reviewService.updateById(review, reviewId);
         return review;
     }
-
 
     @GetMapping("/activity/{post_id}")
     public Review selectReview(@PathVariable("post_id") long reviewId){
