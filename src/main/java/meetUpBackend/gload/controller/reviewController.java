@@ -32,12 +32,13 @@ public class reviewController {
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
         review.setMapdelete(reviewDelete.valueOf("NO"));
+        log.debug("review =" + review);
         reviewService.join(review);
         return review;
     }
 
     @GetMapping("/activity/update/{post_id}")
-    public Review updateReviewPage(@PathVariable("post_id") long reviewId, Model model){
+    public Review updateReviewPage(@PathVariable("post_id") Long reviewId, Model model){
         Review getReviewId = reviewService.selectOne(reviewId);
 
         model.addAttribute("getReviewId", getReviewId);
@@ -45,8 +46,9 @@ public class reviewController {
         return getReviewId;
     }
 
-    @PutMapping("/activity/update/{post_id}")
-    public Review updateReview(@RequestBody reviewRequest request, @PathVariable("post_id") long reviewId){
+
+        @PutMapping("/activity/update/{post_id}")
+    public Review updateReview(@RequestBody reviewRequest request, @PathVariable("post_id") Long reviewId){
         Review review = new Review();
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
@@ -56,7 +58,7 @@ public class reviewController {
     }
 
     @GetMapping("/activity/{post_id}")
-    public Review selectReview(@PathVariable("post_id") long reviewId){
+    public Review selectReview(@PathVariable("post_id") Long reviewId){
 
         Review reviewIdSelect = reviewService.selectOne(reviewId);
 
