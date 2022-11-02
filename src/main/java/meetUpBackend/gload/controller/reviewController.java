@@ -53,6 +53,8 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
+        review.setMapdelete(reviewDelete.valueOf("NO"));
+        log.debug("reviewId = " + reviewId);
         reviewService.updateById(review, reviewId);
         return review;
     }
