@@ -25,7 +25,7 @@ public class reviewService {
     }
 
     @Transactional
-    public void updateById(Review review, long reviewId) {
+    public void updateById(Review review, Long reviewId) {
         reviewRepository.update(review, reviewId);
     }
 

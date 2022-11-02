@@ -2,7 +2,6 @@ package meetUpBackend.gload.repository;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Review;
@@ -11,8 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class reviewRepository {
-    EntityManager em = null;
-    EntityTransaction tx = em.getTransaction();
+    private final EntityManager em;
 
     public void save(Review review) {
         em.persist(review);
@@ -28,25 +26,21 @@ public class reviewRepository {
     }
 
     public int deleteOne(Long id) {
-        return em.createQuery("update Review r set r.mapdelete = 'NO' where r.id = :id", Review.class)
+        return em.createQuery("update Review r set r.mapdelete = 'YES' where r.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
     }
 
 
-    public void update(Review review, long reviewId) {
-        tx.begin();
+    public void update(Review review, Long reviewId) {
         Query query = em.createQuery(
                 "update Review r set r.category = :category, r.content = :content , r.title = :title " +
-                        "where r.id = :id"
-                , Review.class);
+                        "where r.id = :id");
         query.setParameter("category", review.getCategory());
         query.setParameter("content", review.getContent());
         query.setParameter("title", review.getTitle());
         query.setParameter("id", reviewId);
         int rowUpdated = query.executeUpdate();
         System.out.println("rowUpdated" + rowUpdated);
-        tx.commit();
-        em.close();
     }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import meetUpBackend.gload.domain.Review;
+import meetUpBackend.gload.domain.reviewDelete;
 import meetUpBackend.gload.service.reviewService;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +31,7 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
+        review.setMapdelete(reviewDelete.valueOf("NO"));
         reviewService.join(review);
         return review;
     }
@@ -43,7 +45,7 @@ public class reviewController {
         return getReviewId;
     }
 
-        @PutMapping("/activity/update/{post_id}")
+    @PutMapping("/activity/update/{post_id}")
     public Review updateReview(@RequestBody reviewRequest request, @PathVariable("post_id") long reviewId){
         Review review = new Review();
         review.setTitle(request.getTitle());
@@ -69,7 +71,7 @@ public class reviewController {
     }
 
     @PutMapping("/activity/delete/{post_id}")
-    public int deleteReview(@PathVariable("post_id") long reviewId){
+    public int deleteReview(@PathVariable("post_id") Long reviewId){
 
         int deleteReview = reviewService.deleteOne(reviewId);
 
