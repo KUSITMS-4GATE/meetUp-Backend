@@ -1,18 +1,18 @@
 package meetUpBackend.gload.repository;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Review;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class reviewRepository {
-
-    private final EntityManager em;
+    EntityManager em = null;
+    EntityTransaction tx = em.getTransaction();
 
     public void save(Review review) {
         em.persist(review);
@@ -34,4 +34,19 @@ public class reviewRepository {
     }
 
 
+    public void update(Review review, long reviewId) {
+        tx.begin();
+        Query query = em.createQuery(
+                "update Review r set r.category = :category, r.content = :content , r.title = :title " +
+                        "where r.id = :id"
+                , Review.class);
+        query.setParameter("category", review.getCategory());
+        query.setParameter("content", review.getContent());
+        query.setParameter("title", review.getTitle());
+        query.setParameter("id", reviewId);
+        int rowUpdated = query.executeUpdate();
+        System.out.println("rowUpdated" + rowUpdated);
+        tx.commit();
+        em.close();
+    }
 }

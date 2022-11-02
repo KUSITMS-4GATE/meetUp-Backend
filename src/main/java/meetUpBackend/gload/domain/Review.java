@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Getter @Setter
@@ -25,9 +27,11 @@ public class Review {
 
 
     @JsonProperty("regDate")
+    @CreationTimestamp
     private LocalDateTime regDate ;
 
     @JsonProperty("updDate")
+    @UpdateTimestamp
     private LocalDateTime updDate ;
 
     @JsonProperty("reviewTitle")
