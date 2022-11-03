@@ -1,9 +1,19 @@
 package meetUpBackend.gload.repository;
 
+import lombok.RequiredArgsConstructor;
 import meetUpBackend.gload.domain.Roadmap;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+
 @Repository
-public interface roadMapRepository extends JpaRepository<Roadmap, Long> {
+@RequiredArgsConstructor
+public class roadMapRepository {
+
+    private final EntityManager em;
+
+    public void save(Roadmap roadmap) {
+        em.persist(roadmap);
+    }
+
 }
