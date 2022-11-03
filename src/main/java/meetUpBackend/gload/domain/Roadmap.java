@@ -1,27 +1,24 @@
 package meetUpBackend.gload.domain;
 
 import java.time.LocalDateTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@Table(name = "Roadmap")
 public class Roadmap {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roadmapId")
-    private Long id;
+    private Long roadmapId;
 
-//    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-//    private List
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "actSemesterId")
+    private ActSemester actSemesterId;
 
     @Enumerated(EnumType.STRING)
     private roadmapState state; // ENROLL OR OFF
@@ -39,8 +36,8 @@ public class Roadmap {
     private String title;
     @Column(name = "roadmapContent")
     private String content;
-    @Column(name = "roadmapSemester")
-    private String semester;
     @Column(name = "roadmapCategory")
     private String category;
+    @Column(name = "roadmapGrade")
+    private String grade;
 }
