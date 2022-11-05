@@ -20,9 +20,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  output:
+    ansi:
+      enabled: always
 logging:
   level:
-    org.hibernate: info
+    org.hibernate:
+      type: info
+      sql: debug
     org.springframework: info
+
 server:
   port: 9191

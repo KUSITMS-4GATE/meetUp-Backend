@@ -31,7 +31,7 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
-        review.setMapdelete(reviewDelete.valueOf("NO"));
+        review.setMapDelete(reviewDelete.NO);
         log.debug("review =" + review);
         reviewService.join(review);
         return review;
@@ -53,8 +53,7 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
-        review.setMapdelete(reviewDelete.valueOf("NO"));
-        log.debug("reviewId = " + reviewId);
+        review.setMapDelete(request.getMapDelete());
         reviewService.updateById(review, reviewId);
         return review;
     }
@@ -92,5 +91,6 @@ public class reviewController {
         private String title ;
         private String content ;
         private String category;
+        private reviewDelete mapDelete;
     }
 }

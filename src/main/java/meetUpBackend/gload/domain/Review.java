@@ -23,7 +23,7 @@ public class Review {
     @Enumerated(EnumType.STRING)
     @JsonProperty("mapDelete")
     @Column(name = "roadmapDelete")
-    private reviewDelete mapdelete; // YES OR NO
+    private reviewDelete mapDelete; // YES OR NO
 
 
     @JsonProperty("regDate")
