@@ -21,8 +21,8 @@ public class ActSemester {
     private List<Roadmap> roadmapId;
 
     @Column(name = "actSemesterSemester")
-    private String semester;
+    private Integer semester;
     @Column(name = "actSemesterYear")
-    private String year;
+    private Integer year;
 
 }

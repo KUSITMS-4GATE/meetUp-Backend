@@ -1,6 +1,7 @@
 package meetUpBackend.gload.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.*;
 
 import lombok.Getter;
@@ -39,5 +40,9 @@ public class Roadmap {
     @Column(name = "roadmapCategory")
     private String category;
     @Column(name = "roadmapGrade")
-    private String grade;
+    private Integer grade;
+    @Column(name = "roadmapStrDate")
+    private Date roadmapStrDate;
+    @Column(name = "roadmapEndDate")
+    private Date roadmapEndDate;
 }

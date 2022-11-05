@@ -1,12 +1,11 @@
 package meetUpBackend.gload.repository;
 
+import java.util.List;
+import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import meetUpBackend.gload.domain.Review;
+import meetUpBackend.gload.domain.ActSemester;
 import meetUpBackend.gload.domain.Roadmap;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -14,7 +13,11 @@ public class roadMapRepository {
 
     private final EntityManager em;
 
-    public void save(Roadmap roadmap) {
+    public void saveActSemester(ActSemester actSemester) {
+        em.persist(actSemester);
+    }
+
+    public void saveRoadMap(Roadmap roadmap) {
         em.persist(roadmap);
     }
 
