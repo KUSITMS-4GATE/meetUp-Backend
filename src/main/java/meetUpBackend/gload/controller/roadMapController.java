@@ -2,12 +2,13 @@ package meetUpBackend.gload.controller;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import meetUpBackend.gload.domain.Review;
 import meetUpBackend.gload.domain.Roadmap;
 import meetUpBackend.gload.service.roadMapService;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,24 +16,18 @@ public class roadMapController {
 
     private final roadMapService roadMapService;
 
-    @PostMapping("/roadMap/save")
-    public void saveRoadMap(@RequestBody @Validated MapRequest request) {
+    @GetMapping("/roadMap")
+    public String selectRoadMap(Roadmap roadmap) {
+        List<Roadmap> roadmapAll = roadMapService.findAll();
 
-        Roadmap roadmap = new Roadmap();
-        roadmap.setTitle(request.getTitle());
-        roadmap.setContent(request.getContent());
-        roadMapService.join(roadmap);
+        return roadmapAll.toString();
     }
 
-    @Data
-    static class CreateRoadMap {
-        private Long id;
-    }
+    @GetMapping("/roadMap/{post_id}")
+    public String selectSettingRoadMap(@PathVariable("post_id") Long actSemesterId) {
+        Roadmap roadMapSetting = roadMapService.selectOne(actSemesterId);
 
-    @Data
-    static class MapRequest {
-        private String title ;
-        private String content ;
+        return roadMapSetting.toString();
     }
 
 }
