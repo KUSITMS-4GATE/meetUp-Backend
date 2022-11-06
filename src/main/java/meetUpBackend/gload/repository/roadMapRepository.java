@@ -26,8 +26,7 @@ public class roadMapRepository {
                 .getResultList();
     }
 
-    public Roadmap findOne(Long id) {
-        return em.find(Roadmap.class, id);
+    public ActSemester findOne(Long id) {
+        return em.find(ActSemester.class, id);
     }
-
 }

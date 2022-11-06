@@ -17,7 +17,7 @@ public class Roadmap {
     @Column(name = "roadmapId")
     private Long roadmapId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "actSemesterId")
     private ActSemester actSemesterId;
 
