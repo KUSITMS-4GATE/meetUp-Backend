@@ -1,5 +1,6 @@
 package meetUpBackend.gload.domain;
 
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,7 @@ public class ActSemester {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "roadmapId")
-    private List<Roadmap> roadmapId;
+    private List<Roadmap> roadmapId = new ArrayList<>();
 
     @Column(name = "actSemesterSemester")
     private Integer semester;

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import meetUpBackend.gload.domain.ActSemester;
 import meetUpBackend.gload.domain.ActivityUse;
 import meetUpBackend.gload.domain.Roadmap;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/api")
 public class roadMapController {
 
@@ -37,29 +39,32 @@ public class roadMapController {
         ActSemester actSemester = new ActSemester();
         actSemester.setSemester(actSemesterReq.getSemester());
         actSemester.setYear(actSemesterReq.getYear());
+        log.debug("actSemester = " + actSemester);
         roadMapService.saveActSemester(actSemester);
     }
 
     @PostMapping("/roadMap/{post_id}/save")
-    public void saveRoadMap(@PathVariable("post_id") ActSemester actSemesterId, @RequestBody @Validated MapRequest request) {
+    public void saveRoadMap(@PathVariable("post_id") Long actSemesterId, @RequestBody @Validated MapRequest request) {
         Roadmap roadmap = new Roadmap();
 
-        roadmap.setActSemesterId(actSemesterId);
+        ActSemester keyId = roadMapService.selectOne(actSemesterId);
+        System.out.println("keyId = " + keyId);
+        roadmap.setActSemesterId(keyId);
         roadmap.setTitle(request.getTitle());
         roadmap.setCategory(request.getCategory());
         roadmap.setContent(request.getContent());
         roadmap.setState(request.getState());
         roadmap.setGrade(request.getGrade());
         roadmap.setRoadmapStrDate(request.getRoadmapStrDate());
-        roadmap.setRoadmapEndDate(request.getRoadmapStrDate());
+        roadmap.setRoadmapEndDate(request.getRoadmapEndDate());
         roadmap.setActDelete(ActivityUse.NO);
         roadmap.setMapDelete(RoadmapUse.NO);
         roadMapService.saveRoadMap(roadmap);
     }
 
-    @GetMapping("/roadMap/{post_id}")
+    @GetMapping("/roadMap/actSemester/{post_id}")
     public String selectSettingRoadMap(@PathVariable("post_id") Long actSemesterId) {
-        Roadmap roadMapSetting = roadMapService.selectOne(actSemesterId);
+        ActSemester roadMapSetting = roadMapService.selectOne(actSemesterId);
 
         return roadMapSetting.toString();
     }
@@ -72,7 +77,6 @@ public class roadMapController {
 
     @Data
     static class MapRequest {
-        private ActSemester actSemesterId;
         private String title;
         private String category;
         private String content;

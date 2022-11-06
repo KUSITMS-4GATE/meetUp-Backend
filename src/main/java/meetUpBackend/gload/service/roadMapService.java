@@ -37,7 +37,7 @@ public class roadMapService {
 
 
     @Transactional
-    public Roadmap selectOne(Long actSemesterId){
+    public ActSemester selectOne(Long actSemesterId){
 
         return roadMapRepository.findOne(actSemesterId);
     }

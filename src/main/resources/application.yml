@@ -26,9 +26,9 @@ spring:
 logging:
   level:
     org.hibernate:
-      type: info
+      type: debug
       sql: debug
-    org.springframework: info
+    org.springframework: debug
 
 server:
   port: 9191
