@@ -37,9 +37,30 @@ public class roadMapService {
 
 
     @Transactional
-    public ActSemester selectOne(Long actSemesterId){
+    public ActSemester getActSemester(Long actSemesterId){
 
-        return roadMapRepository.findOne(actSemesterId);
+        return roadMapRepository.getActSemesterOne(actSemesterId);
     }
 
+    @Transactional
+    public Roadmap getRoadMap(Long roadMapId){
+        return roadMapRepository.getRoadMapOne(roadMapId);
+    }
+    @Transactional
+    public void updateRoadMap(Roadmap roadmap, Long mapId) {
+        roadMapRepository.updateRoadMap(roadmap, mapId);
+    }
+
+    public int deleteRoadMap(Long roadMapId) {
+        return roadMapRepository.deleteRoadMap(roadMapId);
+    }
+
+    @Transactional
+    public void updateActSemester(ActSemester actSemester, Long actSemesterId) {
+        roadMapRepository.updateActSemester(actSemester, actSemesterId);
+    }
+
+    /*public int deleteActSemester(Long actSemesterId) {
+        return roadMapRepository.deleteActSemester(actSemesterId);
+    }*/
 }
