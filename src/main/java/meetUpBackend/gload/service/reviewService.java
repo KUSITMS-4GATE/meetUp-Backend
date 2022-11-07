@@ -39,4 +39,22 @@ public class reviewService {
         return reviewRepository.deleteOne(reviewId);
     }
 
+    @Transactional
+    public int recommendOne(Long reviewId){
+
+        return reviewRepository.recommendOne(reviewId);
+    }
+
+    @Transactional
+    public int reportOne(Long reviewId){
+
+        return reviewRepository.reportOne(reviewId);
+    }
+
+    @Transactional
+    public int scrapOne(Long reviewId){
+
+        return reviewRepository.scrapOne(reviewId);
+    }
+
 }

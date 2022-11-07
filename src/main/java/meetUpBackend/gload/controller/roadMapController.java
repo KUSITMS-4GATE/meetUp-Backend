@@ -53,12 +53,12 @@ public class roadMapController {
         roadMapService.updateActSemester(actSemester, actSemesterId);
     }
 
-    /*@PutMapping("/roadMap/delete/{post_id}")
-    public int deleteRoadMap(@PathVariable("post_id") Long actSemesterId){
-        int deleteActSemester = roadMapService.deleteActSemester(actSemesterId);
-
-        return deleteActSemester;
-    }*/
+//    @PutMapping("/roadMap/delete/{post_id}")
+//    public int deleteRoadMap(@PathVariable("post_id") Long actSemesterId){
+//        int deleteActSemester = roadMapService.deleteActSemester(actSemesterId);
+//
+//        return deleteActSemester;
+//    }
 
     @PostMapping("/roadMap/{post_id}/save")
     public void saveRoadMap(@PathVariable("post_id") Long actSemesterId, @RequestBody @Validated MapRequest request) {
