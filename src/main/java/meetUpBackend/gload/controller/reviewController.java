@@ -81,6 +81,30 @@ public class reviewController {
         return deleteReview;
     }
 
+    @PutMapping("/activity/recommend/{post_id}")
+    public int recommendReview(@PathVariable("post_id") Long reviewId){
+
+        int recommendReview = reviewService.recommendOne(reviewId);
+
+        return recommendReview;
+    }
+
+    @PutMapping("/activity/report/{post_id}")
+    public int reportReview(@PathVariable("post_id") Long reviewId){
+
+        int reportReview = reviewService.reportOne(reviewId);
+
+        return reportReview;
+    }
+
+    @PutMapping("/activity/scrap/{post_id}")
+    public int scrapReview(@PathVariable("post_id") Long reviewId){
+
+        int scrapReview = reviewService.scrapOne(reviewId);
+
+        return scrapReview;
+    }
+
     @Data
     static class CreateReview {
         private Long id;

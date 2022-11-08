@@ -60,7 +60,7 @@ public class roadMapService {
         roadMapRepository.updateActSemester(actSemester, actSemesterId);
     }
 
-    /*public int deleteActSemester(Long actSemesterId) {
-        return roadMapRepository.deleteActSemester(actSemesterId);
-    }*/
+//    public int deleteActSemester(Long actSemesterId) {
+//        return roadMapRepository.deleteActSemester(actSemesterId);
+//    }
 }

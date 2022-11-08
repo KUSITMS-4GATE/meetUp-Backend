@@ -33,6 +33,24 @@ public class reviewRepository {
                 .executeUpdate();
     }
 
+    public int recommendOne(Long id) {
+        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
+    public int reportOne(Long id) {
+        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
+    public int scrapOne(Long id) {
+        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
 
     public void update(Review review, Long id) {
         Query query = em.createQuery(
