@@ -9,8 +9,10 @@ import meetUpBackend.gload.domain.ActSemester;
 import meetUpBackend.gload.domain.ActivityUse;
 import meetUpBackend.gload.domain.Roadmap;
 import meetUpBackend.gload.domain.RoadmapUse;
+import meetUpBackend.gload.domain.User;
 import meetUpBackend.gload.domain.roadmapState;
 import meetUpBackend.gload.service.roadMapService;
+import meetUpBackend.gload.service.userService;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class roadMapController {
 
     private final roadMapService roadMapService;
+    private final userService userService;
 
     @GetMapping("/roadMap")
     public String selectRoadMap(Roadmap roadmap, Model model) {
@@ -40,6 +43,8 @@ public class roadMapController {
     @PostMapping("/roadMap/actSemester")
     public void saveActSemester(@RequestBody @Validated ActSemesterReq actSemesterReq){
         ActSemester actSemester = new ActSemester();
+        User userId = userService.getUserId(actSemesterReq.getUserId());
+        actSemester.setMyPageId(userId);
         actSemester.setSemester(actSemesterReq.getSemester());
         actSemester.setYear(actSemesterReq.getYear());
         roadMapService.saveActSemester(actSemester);
@@ -120,6 +125,7 @@ public class roadMapController {
     }
     @Data
     static class ActSemesterReq{
+        private String userId;
         private Integer semester;
         private Integer year;
     }
