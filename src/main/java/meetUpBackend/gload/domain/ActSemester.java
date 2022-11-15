@@ -17,6 +17,10 @@ public class ActSemester {
     @Column(name = "actSemesterId")
     private Long actSemesterId;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "myPageId")
+    private User myPageId;
+
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "roadmapId")
     private List<Roadmap> roadmapId = new ArrayList<>();

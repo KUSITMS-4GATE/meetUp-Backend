@@ -3,6 +3,8 @@ package meetUpBackend.gload.service;
 import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import meetUpBackend.gload.common.exception.CustomException;
+import meetUpBackend.gload.common.exception.ErrorCode;
 import meetUpBackend.gload.domain.ActSemester;
 import meetUpBackend.gload.domain.Roadmap;
 import meetUpBackend.gload.repository.roadMapRepository;
@@ -19,7 +21,7 @@ public class roadMapService {
      * ActSemester data save
      */
     @Transactional
-    public void saveActSemester(ActSemester actSemester) {
+    public void saveActSemester(ActSemester actSemester){
         roadMapRepository.saveActSemester(actSemester);
     }
 
@@ -29,7 +31,13 @@ public class roadMapService {
 
     @Transactional
     public void saveRoadMap(Roadmap roadMap) {
-        roadMapRepository.saveRoadMap(roadMap);
+        try {
+            roadMapRepository.saveRoadMap(roadMap);
+            throw new CustomException(ErrorCode.NVALID_PARAMETER);
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
+
     }
     public List<Roadmap> findAll() {
         return roadMapRepository.findAll();
