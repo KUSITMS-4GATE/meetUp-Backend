@@ -34,19 +34,19 @@ public class reviewRepository {
     }
 
     public int recommendOne(Long id) {
-        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+        return em.createQuery("update Event e set e.like = e.like + 1 where e.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
     }
 
     public int reportOne(Long id) {
-        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+        return em.createQuery("update Report r set r.count = r.count + 1 where r.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
     }
 
     public int scrapOne(Long id) {
-        return em.createQuery("update Review r set r.mapDelete = 'YES' where r.id = :id")
+        return em.createQuery("update Event e set e.scrap = e.scrap + 1 where e.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
     }

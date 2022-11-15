@@ -35,6 +35,9 @@ public class Report {
     @Column(name = "reportCategory")
     private Integer category;
 
+    @Column(name = "reportCount")
+    private Integer count;
+
     @JsonProperty("regDate")
     @CreationTimestamp
     private LocalDateTime regDate ;
