@@ -20,8 +20,8 @@ public class Resume {
 
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mypageId")
-    private MyPage mypageId;
+    @JoinColumn(name = "userId")
+    private MyPage userId;
 
 
     @Enumerated(EnumType.STRING)

@@ -33,21 +33,21 @@ public class reviewRepository {
                 .executeUpdate();
     }
 
-    public int recommendOne(Long id) {
-        return em.createQuery("update Event e set e.like = e.like + 1 where e.id = :id")
-                .setParameter("id", id)
+    public int recommendOne(Long reviewId) {
+        return em.createQuery("update Event e set e.like = e.like + 1 where e.reviewId = :reviewId")
+                .setParameter("reviewId", reviewId)
                 .executeUpdate();
     }
 
-    public int reportOne(Long id) {
-        return em.createQuery("update Report r set r.count = r.count + 1 where r.id = :id")
-                .setParameter("id", id)
+    public int reportOne(Long reviewId) {
+        return em.createQuery("update Report r set r.count = r.count + 1 where r.reviewId = :reviewId")
+                .setParameter("reviewId", reviewId)
                 .executeUpdate();
     }
 
-    public int scrapOne(Long id) {
-        return em.createQuery("update Event e set e.scrap = e.scrap + 1 where e.id = :id")
-                .setParameter("id", id)
+    public int scrapOne(Long reviewId) {
+        return em.createQuery("update Event e set e.scrap = e.scrap + 1 where e.reviewId = :reviewId")
+                .setParameter("reviewId", reviewId)
                 .executeUpdate();
     }
 
