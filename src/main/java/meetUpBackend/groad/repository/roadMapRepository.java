@@ -37,9 +37,9 @@ public class roadMapRepository {
 
     public void updateRoadMap(Roadmap roadmap, Long mapId) {
         Query query = em.createQuery(
-        "update Roadmap r set r.category = :category, r.content = :content , r.title = :title ," +
-                "r.state = :state, r.grade = :grade, r.roadmapStrDate = :roadmapStrDate, r.roadmapEndDate = :roadmapEndDate" +
-                "where r.mapId = :mapId");
+        "update Roadmap r set r.category = :category, r.content = :content , r.title = :title , r.state = :state, r.grade = :grade," +
+                "r.roadmapStrDate = :roadmapStrDate, r.roadmapEndDate = :roadmapEndDate " +
+                "where r.roadmapId = :mapId");
         query.setParameter("category", roadmap.getCategory());
         query.setParameter("content", roadmap.getContent());
         query.setParameter("title", roadmap.getTitle());
@@ -53,7 +53,8 @@ public class roadMapRepository {
     }
 
     public int deleteRoadMap(Long id) {
-        return em.createQuery("update Roadmap r set r.actDelete = 'YES' , r.mapDelete = 'YES' where r.id = :id")
+        return em.createQuery("update Roadmap r set r.actDelete = 'YES' , r.mapDelete = 'YES' " +
+                        "where r.roadmapId = :id")
                 .setParameter("id", id)
                 .executeUpdate();
     }
@@ -61,11 +62,11 @@ public class roadMapRepository {
     public void updateActSemester(ActSemester actSemester, Long id) {
         Query query = em.createQuery(
                 "update ActSemester a set a.year = :year, a.semester = :semester " +
-                        "where a.id = :id");
+                        "where a.actSemesterId = :id");
         query.setParameter("year", actSemester.getYear());
         query.setParameter("semester", actSemester.getSemester());
+        query.setParameter("id", id);
         int rowUpdated = query.executeUpdate();
-        System.out.println("rowUpdated" + rowUpdated);
     }
 
 }
