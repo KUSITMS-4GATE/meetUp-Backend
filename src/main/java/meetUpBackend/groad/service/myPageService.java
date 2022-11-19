@@ -1,13 +1,12 @@
 package meetUpBackend.groad.service;
 
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import meetUpBackend.groad.domain.ActSemester;
+import meetUpBackend.groad.domain.MyPage;
 import meetUpBackend.groad.domain.Roadmap;
+import meetUpBackend.groad.domain.User;
 import meetUpBackend.groad.repository.myPageRepository;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -17,18 +16,17 @@ public class myPageService {
     private final myPageRepository myPageRepository;
 
     @Transactional
-    public Roadmap getMyPage(Long roadMapId){
-        return myPageRepository.getRoadMapOne(roadMapId);
+    public Roadmap getMyPage(User userId){
+        return myPageRepository.getRoadMapOne(userId);
     }
 
     @Transactional
-    public void saveActSemester(ActSemester actSemester){
-        myPageRepository.saveActSemester(actSemester);
+    public void saveMyPageInfo(MyPage myPage) {
+        myPageRepository.saveMyPage(myPage);
     }
 
     @Transactional
-    public void updateActSemester(ActSemester actSemester, Long actSemesterId) {
-        myPageRepository.updateActSemester(actSemester, actSemesterId);
+    public void updateMyPageInfo(MyPage myPage, String id) {
+        myPageRepository.updateMyPage(myPage,id);
     }
-
 }
