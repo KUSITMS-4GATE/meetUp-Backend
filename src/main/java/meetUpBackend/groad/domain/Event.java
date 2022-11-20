@@ -17,8 +17,8 @@ public class Event {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "portfolioId")
-    private Review portfolioId;
+    @JoinColumn(name = "userId")
+    private Review userId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reviewId")

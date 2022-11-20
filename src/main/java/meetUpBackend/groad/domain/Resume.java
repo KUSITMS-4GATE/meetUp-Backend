@@ -2,6 +2,9 @@ package meetUpBackend.groad.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,9 +22,9 @@ public class Resume {
     private Long resumeId;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
-    private MyPage userId;
+    private Member member;
 
 
     @Enumerated(EnumType.STRING)
@@ -30,8 +33,9 @@ public class Resume {
     @Enumerated(EnumType.STRING)
     private ResumeDelete resumeDelete; // YES OR NO
 
-
+    @CreationTimestamp
     private LocalDateTime regDate ;
+    @UpdateTimestamp
     private LocalDateTime updDate ;
 
 
