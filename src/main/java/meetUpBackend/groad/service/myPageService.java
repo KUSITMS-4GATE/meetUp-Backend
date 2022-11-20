@@ -16,8 +16,8 @@ public class myPageService {
     private final myPageRepository myPageRepository;
 
     @Transactional
-    public Roadmap getMyPage(User userId){
-        return myPageRepository.getRoadMapOne(userId);
+    public MyPage getMyPage(User userId){
+        return myPageRepository.getMyPageOne(userId);
     }
 
     @Transactional

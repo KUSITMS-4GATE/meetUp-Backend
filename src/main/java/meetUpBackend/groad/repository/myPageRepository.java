@@ -14,8 +14,8 @@ public class myPageRepository {
 
     private final EntityManager em;
 
-    public Roadmap getRoadMapOne(User id) {
-        return em.find(Roadmap.class, id);
+    public MyPage getMyPageOne(User id) {
+        return em.find(MyPage.class, id);
     }
 
     public void saveMyPage(MyPage myPage) {
