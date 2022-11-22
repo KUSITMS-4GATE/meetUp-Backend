@@ -1,5 +1,8 @@
 server:
   port: 9191
+  servlet:
+    encoding:
+      force-response: true
 
 spring:
   profiles:
@@ -35,13 +38,3 @@ logging:
       type: debug
       sql: debug
     org.springframework: debug
-
-#spring:
-#  jpa:
-#    hibernate:
-#      ddl-auto: create
-#  datasource:
-#    url: jdbc:mysql://192.168.200.107:3306/ApiDB
-#    username: ljj
-#    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver

@@ -24,7 +24,7 @@ public class resumeController {
         return userResumeAll.toString();
     }
 
-    @GetMapping("/{user_id}/getUserResume")
+    @GetMapping("/{user_id}/getuserresume")
     public MyPage linkUserResume(@PathVariable("user_id") String userId) {
         MyPage getUserId = resumeService.selectOne(userId);
 
@@ -33,6 +33,8 @@ public class resumeController {
 
     @GetMapping("/resume/school/{school_name}")
     public String resumeFilterSchool(@PathVariable("school_name") String schoolName) {
+        // System.out.println(schoolName);
+
         List<MyPage> userResumeAll = resumeService.findSchool(schoolName);
 
         return userResumeAll.toString();
