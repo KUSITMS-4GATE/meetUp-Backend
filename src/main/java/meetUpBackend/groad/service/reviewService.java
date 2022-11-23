@@ -68,10 +68,4 @@ public class reviewService {
     public List<Event> findHottestPortfolio() {
         return reviewRepository.findHottestPortfolio();
     }
-
-    @Transactional
-    public List<Review> findReview(String searchWord) {
-        return reviewRepository.findByWord(searchWord);
-    }
-
 }

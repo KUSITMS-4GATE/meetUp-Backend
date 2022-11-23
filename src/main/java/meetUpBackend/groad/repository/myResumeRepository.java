@@ -77,11 +77,4 @@ public class myResumeRepository {
                 .executeUpdate();
 
     }
-
-    public List<Resume> findByWord(String searchWord) {
-        Query query = em.createQuery("select * from Resume r where r.title like %:searchWord% or r.content like %:searchWord%");
-        query.setParameter("searchWord", searchWord);
-        System.out.println("findByWord" + searchWord);
-        return query.getResultList();
-    }
 }

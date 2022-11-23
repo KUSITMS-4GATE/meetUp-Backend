@@ -62,13 +62,6 @@ public class myResumeService {
 
     @Transactional
     public int scrapOne(String userId){
-
         return myResumeRepository.scrapOne(userId);
     }
-
-
-    public List<Resume> findResume(String searchWord) {
-        return myResumeRepository.findByWord(searchWord);
-    }
-
 }

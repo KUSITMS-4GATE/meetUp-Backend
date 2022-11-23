@@ -89,11 +89,4 @@ public class reviewRepository {
         int rowUpdated = query.executeUpdate();
         System.out.println("rowUpdated" + rowUpdated);
     }
-
-    public List<Review> findByWord(String searchWord){
-        Query query = em.createQuery("select * from Review r where r.content like %:searchWord% or r.title like %:searchWord%");
-        query.setParameter("searchWord", searchWord);
-        System.out.println("findByWord" + searchWord);
-        return query.getResultList();
-    }
 }

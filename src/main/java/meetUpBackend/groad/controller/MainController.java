@@ -1,13 +1,9 @@
 package meetUpBackend.groad.controller;
 
 import meetUpBackend.groad.service.MainService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class MainController {
     private final MainService mainService;
 
@@ -21,8 +17,8 @@ public class MainController {
     }
 
     @GetMapping("/search/{category}")
-    public String showSearchResults(@RequestParam(value = "search_word", required = false, defaultValue = "") String searchWord,
-                                    @PathVariable String category) {
+    public String showSearchResults(@RequestParam(value = "searchword", required = false, defaultValue = "") String searchWord,
+                                    @PathVariable("category") String category) {
         return mainService.search(category, searchWord);
     }
 
