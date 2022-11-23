@@ -69,4 +69,9 @@ public class reviewService {
         return reviewRepository.findHottestPortfolio();
     }
 
+    @Transactional
+    public List<Review> findReview(String searchWord) {
+        return reviewRepository.findByWord(searchWord);
+    }
+
 }

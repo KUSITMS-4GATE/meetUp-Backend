@@ -33,6 +33,7 @@ public class reviewRepository {
 
     public List<Review> findHottestReview() {
         return em.createQuery("select r from Review r", Review.class)
+                .setMaxResults(5)
                 .getResultList();
 
 //        select * from review
@@ -45,6 +46,7 @@ public class reviewRepository {
     //portfolio 레포없어서 여기서 작성
     public List<Event> findHottestPortfolio() {
         List<Event> resultList = em.createQuery("select e from Event e where e.reviewId is null order by e.like desc", Event.class)
+                .setMaxResults(5)
                 .getResultList();
         return resultList;
     }
@@ -86,5 +88,12 @@ public class reviewRepository {
         query.setParameter("id", id);
         int rowUpdated = query.executeUpdate();
         System.out.println("rowUpdated" + rowUpdated);
+    }
+
+    public List<Review> findByWord(String searchWord){
+        Query query = em.createQuery("select * from Review r where r.content like %:searchWord% or r.title like %:searchWord%");
+        query.setParameter("searchWord", searchWord);
+        System.out.println("findByWord" + searchWord);
+        return query.getResultList();
     }
 }

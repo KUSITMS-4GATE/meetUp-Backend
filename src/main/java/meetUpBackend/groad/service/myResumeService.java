@@ -3,6 +3,7 @@ package meetUpBackend.groad.service;
 
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.Member;
+import meetUpBackend.groad.domain.MyPage;
 import meetUpBackend.groad.domain.Resume;
 import meetUpBackend.groad.repository.myResumeRepository;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,11 @@ public class myResumeService {
     public int scrapOne(String userId){
 
         return myResumeRepository.scrapOne(userId);
+    }
+
+
+    public List<Resume> findResume(String searchWord) {
+        return myResumeRepository.findByWord(searchWord);
     }
 
 }
