@@ -14,11 +14,9 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Long id;
-
 	@Column(name = "userId")
 	private String userId;
+
 
 //	@OneToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "myPageId")

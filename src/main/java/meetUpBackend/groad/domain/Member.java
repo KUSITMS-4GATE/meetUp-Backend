@@ -3,10 +3,9 @@ package meetUpBackend.groad.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Entity
@@ -14,9 +13,17 @@ import javax.persistence.Id;
 public class Member {
     @Id
     @GeneratedValue
+    @JoinColumn(name = "userId")
+    private String userId;
+
     @Column(name = "member_id")
     private Long id;
 
     private String pwd;
+
+    private LocalDateTime regDate;
+    private LocalDateTime updDate;
+
+    private String name;
     private String email;
 }
