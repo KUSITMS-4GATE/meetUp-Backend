@@ -5,12 +5,7 @@ import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import meetUpBackend.groad.domain.ActSemester;
-import meetUpBackend.groad.domain.ActivityUse;
-import meetUpBackend.groad.domain.Roadmap;
-import meetUpBackend.groad.domain.RoadmapUse;
-import meetUpBackend.groad.domain.User;
-import meetUpBackend.groad.domain.RoadmapState;
+import meetUpBackend.groad.domain.*;
 import meetUpBackend.groad.service.RoadMapService;
 import meetUpBackend.groad.service.UserService;
 import org.springframework.ui.Model;
@@ -27,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/api")
-public class roadMapController {
+public class RoadMapController {
 
     private final RoadMapService roadMapService;
     private final UserService userService;
@@ -43,7 +38,7 @@ public class roadMapController {
     @PostMapping("/roadmap/actsemester")
     public void saveActSemester(@RequestBody @Validated ActSemesterReq actSemesterReq){
         ActSemester actSemester = new ActSemester();
-        User userId = userService.getUserId(actSemesterReq.getUserId());
+        Member userId = userService.getUserId(actSemesterReq.getUserId());
         actSemester.setMyPageId(userId);
         actSemester.setSemester(actSemesterReq.getSemester());
         actSemester.setYear(actSemesterReq.getYear());
