@@ -19,7 +19,7 @@ public class ActSemester {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "myPageId")
-    private User myPageId;
+    private Member myPageId;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "roadmapId")

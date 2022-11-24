@@ -3,7 +3,7 @@ package meetUpBackend.groad.controller;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import meetUpBackend.groad.domain.User;
+import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +22,14 @@ public class UserController {
 
 	@GetMapping("/user/{userId}")
 	public String selectRoadMap(@PathVariable("userId") String user_Id) {
-		User userId = userService.getUserId(user_Id);
+		Member userId = userService.getUserId(user_Id);
 
 		return userId.toString();
 	}
 
 	@PostMapping("/user/reg")
-	public void regUser(@RequestBody @Validated User userReq){
-		User user = new User();
+	public void regUser(@RequestBody @Validated Member userReq){
+		Member user = new Member();
 		user.setUserId(userReq.getUserId());
 		userService.regUser(user);
 	}
