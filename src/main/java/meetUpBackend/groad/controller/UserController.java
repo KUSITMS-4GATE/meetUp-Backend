@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import meetUpBackend.groad.domain.User;
-import meetUpBackend.groad.service.userService;
+import meetUpBackend.groad.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/api")
-public class userController {
-	private final userService userService;
+public class UserController {
+	private final UserService userService;
 
 	@GetMapping("/user/{userId}")
 	public String selectRoadMap(@PathVariable("userId") String user_Id) {

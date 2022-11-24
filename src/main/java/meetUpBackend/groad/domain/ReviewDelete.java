@@ -1,5 +1,5 @@
 package meetUpBackend.groad.domain;
 
-public enum reviewDelete {
+public enum ReviewDelete {
     YES , NO
 }

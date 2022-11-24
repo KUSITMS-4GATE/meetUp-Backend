@@ -4,13 +4,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.MyPage;
-import meetUpBackend.groad.domain.Roadmap;
 import meetUpBackend.groad.domain.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class myPageRepository {
+public class MyPageRepository {
 
     private final EntityManager em;
 

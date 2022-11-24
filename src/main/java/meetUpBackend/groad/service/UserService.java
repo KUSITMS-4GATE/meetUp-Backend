@@ -4,13 +4,13 @@ import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.User;
 import org.springframework.stereotype.Service;
-import meetUpBackend.groad.repository.userRepository;
+import meetUpBackend.groad.repository.UserRepository;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class userService {
-	private final userRepository userRepository;
+public class UserService {
+	private final UserRepository userRepository;
 
 	@Transactional
 	public User getUserId(String userId) {

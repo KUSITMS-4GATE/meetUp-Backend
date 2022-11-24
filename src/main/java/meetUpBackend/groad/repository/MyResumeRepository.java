@@ -3,7 +3,7 @@ package meetUpBackend.groad.repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.domain.Resume;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class myResumeRepository {
+public class MyResumeRepository {
     private final EntityManager em;
 
     public Member getMember(String userId) {

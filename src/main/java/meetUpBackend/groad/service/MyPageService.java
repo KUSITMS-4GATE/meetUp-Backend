@@ -3,17 +3,16 @@ package meetUpBackend.groad.service;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.MyPage;
-import meetUpBackend.groad.domain.Roadmap;
 import meetUpBackend.groad.domain.User;
-import meetUpBackend.groad.repository.myPageRepository;
+import meetUpBackend.groad.repository.MyPageRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class myPageService {
+public class MyPageService {
 
-    private final myPageRepository myPageRepository;
+    private final MyPageRepository myPageRepository;
 
     @Transactional
     public MyPage getMyPage(User userId){

@@ -1,19 +1,15 @@
 package meetUpBackend.groad.repository;
 
 import lombok.RequiredArgsConstructor;
-import meetUpBackend.groad.controller.resumeController;
 import meetUpBackend.groad.domain.MyPage;
-import meetUpBackend.groad.domain.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class resumeRepository {
+public class ResumeRepository {
     private final EntityManager em;
 
     public MyPage findOne(String userId) {

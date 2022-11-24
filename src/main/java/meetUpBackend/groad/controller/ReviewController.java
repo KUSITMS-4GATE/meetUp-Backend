@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import meetUpBackend.groad.domain.Review;
-import meetUpBackend.groad.domain.reviewDelete;
-import meetUpBackend.groad.service.reviewService;
+import meetUpBackend.groad.domain.ReviewDelete;
+import meetUpBackend.groad.service.ReviewService;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class reviewController {
+public class ReviewController {
 
-    private final reviewService reviewService;
+    private final ReviewService reviewService;
 
     @PostMapping("/activity/write")
     public Review saveReview(@RequestBody @Validated reviewRequest request) {
@@ -31,7 +31,7 @@ public class reviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
-        review.setMapDelete(reviewDelete.NO);
+        review.setMapDelete(ReviewDelete.NO);
         log.debug("review =" + review);
         reviewService.join(review);
         return review;
@@ -115,6 +115,6 @@ public class reviewController {
         private String title ;
         private String content ;
         private String category;
-        private reviewDelete mapDelete;
+        private ReviewDelete mapDelete;
     }
 }

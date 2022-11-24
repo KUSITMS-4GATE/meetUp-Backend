@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class roadMapRepository {
+public class RoadMapRepository {
 
     private final EntityManager em;
 
