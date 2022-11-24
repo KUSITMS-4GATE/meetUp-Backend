@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import lombok.RequiredArgsConstructor;
+import meetUpBackend.groad.domain.Event;
 import meetUpBackend.groad.domain.Review;
 import meetUpBackend.groad.domain.reviewDelete;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -25,6 +27,28 @@ public class reviewRepository {
     public List<Review> findAll() {
         return em.createQuery("select r from Review r", Review.class)
                 .getResultList();
+    }
+
+
+
+    public List<Review> findHottestReview() {
+        return em.createQuery("select r from Review r", Review.class)
+                .setMaxResults(5)
+                .getResultList();
+
+//        select * from review
+//        inner join event
+//        on review.reviewId = event.reviewId
+//        where portfolioId = null
+//        order by event_like desc limit 3;
+    }
+
+    //portfolio 레포없어서 여기서 작성
+    public List<Event> findHottestPortfolio() {
+        List<Event> resultList = em.createQuery("select e from Event e where e.reviewId is null order by e.like desc", Event.class)
+                .setMaxResults(5)
+                .getResultList();
+        return resultList;
     }
 
     public int deleteOne(Long id) {

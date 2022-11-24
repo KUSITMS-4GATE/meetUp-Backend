@@ -3,6 +3,7 @@ package meetUpBackend.groad.service;
 import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import meetUpBackend.groad.domain.Event;
 import meetUpBackend.groad.domain.Review;
 import meetUpBackend.groad.repository.reviewRepository;
 import org.springframework.stereotype.Service;
@@ -57,4 +58,14 @@ public class reviewService {
         return reviewRepository.scrapOne(reviewId);
     }
 
+    @Transactional
+    public List<Review> findHottestReview() {
+        return reviewRepository.findHottestReview();
+    }
+
+    //portfolio 없어서 여기다 작성
+    @Transactional
+    public List<Event> findHottestPortfolio() {
+        return reviewRepository.findHottestPortfolio();
+    }
 }
