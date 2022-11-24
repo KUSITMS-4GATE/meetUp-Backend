@@ -1,5 +1,6 @@
 package meetUpBackend.groad.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,8 @@ public class ReviewController {
         review.setTitle(request.getTitle());
         review.setContent(request.getContent());
         review.setCategory(request.getCategory());
+        review.setRegDate(LocalDateTime.now());
+        review.setUpdDate(LocalDateTime.now());
         review.setMapDelete(ReviewDelete.NO);
         log.debug("review =" + review);
         reviewService.join(review);

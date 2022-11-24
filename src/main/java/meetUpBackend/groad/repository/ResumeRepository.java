@@ -13,7 +13,9 @@ public class ResumeRepository {
     private final EntityManager em;
 
     public MyPage findOne(String userId) {
-        return em.find(MyPage.class, userId);
+        return em.createQuery("select m from MyPage m where m.userId.userId = :userId", MyPage.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
     }
 
     public List<MyPage> findAll() {

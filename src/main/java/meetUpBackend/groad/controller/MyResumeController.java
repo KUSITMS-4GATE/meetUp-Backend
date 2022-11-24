@@ -23,7 +23,7 @@ public class MyResumeController {
 
     private final MyResumeService myResumeService;
 
-    @GetMapping("/{user_id}/getmyresume")
+    @GetMapping("/{user_id}/myresume")
     public List<Resume> GetMyResume(@PathVariable("user_id") String userId) {
         List<Resume> resumeAll = myResumeService.findAll(userId);
 

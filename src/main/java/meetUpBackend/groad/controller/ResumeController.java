@@ -3,7 +3,7 @@ package meetUpBackend.groad.controller;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import meetUpBackend.groad.domain.User;
+import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.domain.MyPage;
 import meetUpBackend.groad.service.ResumeService;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +63,7 @@ public class ResumeController {
 
     @Data
     static class userResumeData {
-        private User user;
+        private Member user;
         private MyPage myPage;
     }
 //    @Data
