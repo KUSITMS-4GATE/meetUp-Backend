@@ -1,6 +1,7 @@
 package meetUpBackend.groad.config;
 
 import lombok.RequiredArgsConstructor;
+import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.dto.UserDto;
 import meetUpBackend.groad.service.TokenService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,15 +30,21 @@ public class JwtAuthFilter extends GenericFilterBean {
 
         if (token != null && tokenService.verifyToken(token)) {
             String email = tokenService.getUid(token);
+            String name = tokenService.getName(token);
 
+            Member member = new Member();
+            member.setEmail(email);
+            member.setName(name);
 
-            UserDto userDto = UserDto.builder()
-                    .email(email)
-                    .name("이름테스트")
-                    .picture("프로필이미지 테스트")
-                    .build();
+//            UserDto userDto = UserDto.builder()
+//                    .email(email)
+//                    .name(name)
+//                    .picture("프로필이미지 테스트")
+//                    .build();
 
-            Authentication authentication = getAuthentication(userDto);
+//            Authentication authentication = getAuthentication(userDto);
+            Authentication authentication = getAuthentication(member);
+
             SecurityContextHolder
                     .getContext()
                     .setAuthentication(authentication);
@@ -45,9 +52,9 @@ public class JwtAuthFilter extends GenericFilterBean {
         chain.doFilter(request, response);
     }
 
-    public Authentication getAuthentication(UserDto userDto) {
+    public Authentication getAuthentication(Member member) {
         return new UsernamePasswordAuthenticationToken(
-                userDto,
+                member,
                 "",
                 Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))
         );

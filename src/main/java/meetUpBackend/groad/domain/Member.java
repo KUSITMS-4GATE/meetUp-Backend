@@ -2,12 +2,14 @@ package meetUpBackend.groad.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 public class Member {
@@ -16,7 +18,7 @@ public class Member {
     @JoinColumn(name = "userId")
     private String userId;
 
-    @Column(name = "member_id")
+    @Column(name = "memberId")
     private Long id;
 
     private String pwd;
@@ -26,4 +28,8 @@ public class Member {
 
     private String name;
     private String email;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "mypageId")
+//    private MyPage mypageId;
 }

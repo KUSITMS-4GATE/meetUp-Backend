@@ -8,7 +8,7 @@ import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.domain.Resume;
 import meetUpBackend.groad.domain.ResumeDelete;
 import meetUpBackend.groad.domain.ResumePass;
-import meetUpBackend.groad.service.myResumeService;
+import meetUpBackend.groad.service.MyResumeService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +19,11 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class myResumeController {
+public class MyResumeController {
 
-    private final myResumeService myResumeService;
+    private final MyResumeService myResumeService;
 
-    @GetMapping("/{user_id}/getmyresume")
+    @GetMapping("/{user_id}/myresume")
     public List<Resume> GetMyResume(@PathVariable("user_id") String userId) {
         List<Resume> resumeAll = myResumeService.findAll(userId);
 

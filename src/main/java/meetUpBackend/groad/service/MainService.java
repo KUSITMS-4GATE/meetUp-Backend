@@ -16,9 +16,9 @@ public class MainService {
 
     private final MyResumeRepositoryInterface myResumeRepositoryInterface;
 
-    private final reviewService reviewService;
+    private final ReviewService reviewService;
 
-    public MainService(ReviewServiceInterface reviewServiceInterface, MyResumeRepositoryInterface myResumeRepositoryInterface, meetUpBackend.groad.service.reviewService reviewService) {
+    public MainService(ReviewServiceInterface reviewServiceInterface, MyResumeRepositoryInterface myResumeRepositoryInterface, ReviewService reviewService) {
         this.reviewServiceInterface = reviewServiceInterface;
         this.myResumeRepositoryInterface = myResumeRepositoryInterface;
         this.reviewService = reviewService;

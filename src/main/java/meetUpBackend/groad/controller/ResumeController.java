@@ -3,9 +3,9 @@ package meetUpBackend.groad.controller;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import meetUpBackend.groad.domain.User;
+import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.domain.MyPage;
-import meetUpBackend.groad.service.resumeService;
+import meetUpBackend.groad.service.ResumeService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -13,9 +13,9 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class resumeController {
+public class ResumeController {
 
-    private final resumeService resumeService;
+    private final ResumeService resumeService;
 
     @GetMapping("/resume")
     public String resumeList() {
@@ -63,7 +63,7 @@ public class resumeController {
 
     @Data
     static class userResumeData {
-        private User user;
+        private Member user;
         private MyPage myPage;
     }
 //    @Data

@@ -22,7 +22,7 @@ public class Roadmap {
     private ActSemester actSemesterId;
 
     @Enumerated(EnumType.STRING)
-    private roadmapState state; // ENROLL OR OFF
+    private RoadmapState state; // ENROLL OR OFF
 
     @Enumerated(EnumType.STRING)
     private ActivityUse actDelete; // YES OR NO

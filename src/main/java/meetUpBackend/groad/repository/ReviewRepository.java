@@ -7,13 +7,12 @@ import javax.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.Event;
 import meetUpBackend.groad.domain.Review;
-import meetUpBackend.groad.domain.reviewDelete;
-import org.springframework.data.jpa.repository.JpaRepository;
+import meetUpBackend.groad.domain.ReviewDelete;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class reviewRepository {
+public class ReviewRepository {
     private final EntityManager em;
 
     public void save(Review review) {
@@ -83,7 +82,7 @@ public class reviewRepository {
         query.setParameter("category", review.getCategory());
         query.setParameter("content", review.getContent());
         query.setParameter("title", review.getTitle());
-        query.setParameter("mapDelete", reviewDelete.valueOf("NO"));
+        query.setParameter("mapDelete", ReviewDelete.valueOf("NO"));
         query.setParameter("updDate", LocalDateTime.now());
         query.setParameter("id", id);
         int rowUpdated = query.executeUpdate();

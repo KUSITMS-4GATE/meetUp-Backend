@@ -5,14 +5,14 @@ import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.Event;
 import meetUpBackend.groad.domain.Review;
-import meetUpBackend.groad.repository.reviewRepository;
+import meetUpBackend.groad.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class reviewService {
-    private final reviewRepository reviewRepository;
+public class ReviewService {
+    private final ReviewRepository reviewRepository;
 
     @Transactional
     public void join(Review review){

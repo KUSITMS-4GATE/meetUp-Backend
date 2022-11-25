@@ -3,9 +3,8 @@ package meetUpBackend.groad.service;
 
 import lombok.RequiredArgsConstructor;
 import meetUpBackend.groad.domain.Member;
-import meetUpBackend.groad.domain.MyPage;
 import meetUpBackend.groad.domain.Resume;
-import meetUpBackend.groad.repository.myResumeRepository;
+import meetUpBackend.groad.repository.MyResumeRepository;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -13,9 +12,9 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class myResumeService {
+public class MyResumeService {
 
-    private final myResumeRepository myResumeRepository;
+    private final MyResumeRepository myResumeRepository;
 
     public List<Resume> findAll(String userId) {
         return myResumeRepository.findAll(userId);

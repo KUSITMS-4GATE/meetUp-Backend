@@ -1,12 +1,15 @@
 package meetUpBackend.groad.domain;
 
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.Type;
+import meetUpBackend.groad.domain.Member;
 
 @Entity
 @Getter @Setter
@@ -22,13 +25,9 @@ public class MyPage {
     private UUID myPageId = UUID.randomUUID();
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "resumeId")
-    private Resume resumeId;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "userId")
-    private User userId;
-
+    private Member userId;
 
     private LocalDateTime regDate ;
     private LocalDateTime updDate ;
@@ -47,7 +46,5 @@ public class MyPage {
     private String company;
     @Column(name = "selfIntroduce")
     private String selfIntroduce;
-
-
 
 }

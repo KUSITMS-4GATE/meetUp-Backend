@@ -2,23 +2,23 @@ package meetUpBackend.groad.service;
 
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import meetUpBackend.groad.domain.User;
+import meetUpBackend.groad.domain.Member;
 import org.springframework.stereotype.Service;
-import meetUpBackend.groad.repository.userRepository;
+import meetUpBackend.groad.repository.UserRepository;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class userService {
-	private final userRepository userRepository;
+public class UserService {
+	private final UserRepository userRepository;
 
 	@Transactional
-	public User getUserId(String userId) {
+	public Member getUserId(String userId) {
 		return userRepository.getUserId(userId);
 	}
 
 	@Transactional
-	public void regUser(User user) {
+	public void regUser(Member user) {
 		userRepository.regUser(user);
 	}
 }

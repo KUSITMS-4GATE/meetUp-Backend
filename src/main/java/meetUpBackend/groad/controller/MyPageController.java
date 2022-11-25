@@ -2,44 +2,39 @@ package meetUpBackend.groad.controller;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import meetUpBackend.groad.domain.Member;
 import meetUpBackend.groad.domain.MyPage;
-import meetUpBackend.groad.domain.Roadmap;
-import meetUpBackend.groad.domain.User;
-import meetUpBackend.groad.service.myPageService;
-import meetUpBackend.groad.service.userService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import meetUpBackend.groad.service.MyPageService;
+import meetUpBackend.groad.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/api")
-public class myPageController {
+public class MyPageController {
 
-    private final myPageService myPageService;
+    private final MyPageService myPageService;
 
-    private final userService userService;
+    private final UserService userService;
 
-    @GetMapping("/{user_id}/myPage")
-    public String selectMyPageInfo(@PathVariable("user_id") String id) {
-        User userId = userService.getUserId(id);
-        List<Roadmap> myPageAll = (List<Roadmap>) myPageService.getMyPage(userId);
+    @GetMapping("/{user_id}/mypage")
+    public MyPage selectMyPageInfo(@PathVariable("user_id") String id) {
+        Member userId = userService.getUserId(id);
+        // List<Roadmap> myPageAll = (List<Roadmap>) myPageService.getMyPage(userId);
+        MyPage myPageAll = myPageService.getMyPage(userId);
 
-        return myPageAll.toString();
+        return myPageAll;
    }
 
-    @PostMapping("/{user_id}/myPage/saveInfo")
-    public void saveMyPageInfo(userResumeIdReq userResumeIdReq, @PathVariable("user_id") String id){
+    @PostMapping("/{user_id}/mypage/saveinfo")
+    public void saveMyPageInfo(@RequestBody userResumeIdReq userResumeIdReq, @PathVariable("user_id") String id){
         MyPage myPage = new MyPage();
-        User userId = userService.getUserId(id);
+        Member userId = userService.getUserId(id);
         myPage.setMyPageId(myPage.getMyPageId());
         myPage.setUserId(userId);
         myPage.setRegDate(LocalDateTime.now());
@@ -54,19 +49,24 @@ public class myPageController {
         myPageService.saveMyPageInfo(myPage);
     }
 
-    @PutMapping("/{user_id}/myPage/updateInfo/{myPage_id}")
-    public void updateMyPageInfo(myPageController.userResumeIdReq userResumeIdReq, @PathVariable("user_id") String id
-            , @PathVariable("myPage_id") MyPage myPageId){
+    @PutMapping("/{user_id}/mypage/updateinfo")
+    public void updateMyPageInfo(@RequestBody userResumeIdReq userResumeIdReq, @PathVariable("user_id") String id) {
         MyPage myPage = new MyPage();
-        myPage.setMyPageId(myPageId.getMyPageId());
         myPage.setCollege(userResumeIdReq.getCollege());
         myPage.setMajor(userResumeIdReq.getMajor());
         myPage.setEnterYear(userResumeIdReq.getEnterYear());
+        myPage.setUpdDate(LocalDateTime.now());
         myPage.setGrade(userResumeIdReq.getGrade());
         myPage.setCareer(userResumeIdReq.getCareer());
         myPage.setCompany(userResumeIdReq.getCompany());
         myPage.setSelfIntroduce(userResumeIdReq.getSelfIntroduce());
         myPageService.updateMyPageInfo(myPage,id);
+
+//        System.out.println(myPage.getMajor());
+//        System.out.println(myPage.getCareer());
+//        System.out.println(myPage.getCollege());
+//        System.out.println(myPage.getCompany());
+//        System.out.println(myPage.getSelfIntroduce());
     }
 
     @Data

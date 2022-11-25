@@ -2,18 +2,18 @@ package meetUpBackend.groad.repository;
 
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import meetUpBackend.groad.domain.User;
+import meetUpBackend.groad.domain.Member;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class userRepository {
+public class UserRepository {
 	private final EntityManager em;
-	public User getUserId(String userId) {
-		return em.find(User.class, userId);
+	public Member getUserId(String userId) {
+		return em.find(Member.class, userId);
 	}
 
-	public void regUser(User user) {
+	public void regUser(Member user) {
 		em.persist(user);
 	}
 }

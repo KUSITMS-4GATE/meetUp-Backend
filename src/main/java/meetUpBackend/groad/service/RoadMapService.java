@@ -7,15 +7,15 @@ import meetUpBackend.groad.common.exception.CustomException;
 import meetUpBackend.groad.common.exception.ErrorCode;
 import meetUpBackend.groad.domain.ActSemester;
 import meetUpBackend.groad.domain.Roadmap;
-import meetUpBackend.groad.repository.roadMapRepository;
+import meetUpBackend.groad.repository.RoadMapRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class roadMapService {
+public class RoadMapService {
 
-    private final roadMapRepository roadMapRepository;
+    private final RoadMapRepository roadMapRepository;
 
     /**
      * ActSemester data save

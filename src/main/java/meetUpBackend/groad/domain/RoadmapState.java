@@ -1,5 +1,5 @@
 package meetUpBackend.groad.domain;
 
-public enum roadmapState {
+public enum RoadmapState {
     ENROLL , OFF
 }
